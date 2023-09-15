@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+
+	<title>Music at Hartford Church of England High School</title>
+	<meta name="description" content="View details on studying Music at Hartford Church of England High School based in Northwich, Cheshire" />
+	
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="../css/style.css@ver=18.css" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="youtubelightbox" class="parent">
+	<div class="centeredchild">
+		<div class="videowrapper">
+		<div id="playerdiv"></div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+// load Youtube API code asynchronously
+var tag = document.createElement('script')
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0]
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+
+var isiOS = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)/i) != null //boolean check for iOS devices
+
+var youtubelightbox = document.getElementById('youtubelightbox')
+var player // variable to hold new YT.Player() instance
+
+// Hide lightbox when clicked on
+youtubelightbox.addEventListener('click', function(){
+	this.style.display = 'none'
+	player.stopVideo()
+}, false)
+
+// Exclude youtube iframe from above action
+youtubelightbox.querySelector('.centeredchild').addEventListener('click', function(e){
+	e.stopPropagation()
+}, false)
+
+
+// define onYouTubeIframeAPIReady() function and initialize lightbox when API is ready
+function onYouTubeIframeAPIReady() {
+	createlightbox()
+}
+
+// Extracts the Youtube video ID from a well formed Youtube URL
+function getyoutubeid(link){
+	// Assumed Youtube URL formats
+	// https://www.youtube.com/watch?v=Pe0jFDPHkzo
+	// https://youtu.be/Pe0jFDPHkzo
+	// https://www.youtube.com/v/Pe0jFDPHkzo
+	// and more
+
+	//See http://stackoverflow.com/a/6904504/4360074
+	var youtubeidreg = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+	return youtubeidreg.exec(link)[1] // return Youtube video ID portion of link
+}
+
+// Creates a new YT.Player() instance
+function createyoutubeplayer(videourl){
+	player = new YT.Player('playerdiv', {
+		videoId: videourl,
+		playerVars: {autoplay:1}
+	})
+}
+
+// Main Youtube lightbox function
+function createlightbox(){
+	var targetlinks = document.querySelectorAll('.lightbox')
+	for (var i=0; i<targetlinks.length; i++){
+		var link = targetlinks[i]
+		link._videoid = getyoutubeid(link) // store youtube video ID portion of link inside _videoid property
+		targetlinks[i].addEventListener('click', function(e){
+			youtubelightbox.style.display = 'block'
+			if (typeof player == 'undefined'){ // if video player hasn't been created yet
+				createyoutubeplayer(this._videoid)
+			}
+			else{
+				if (isiOS){ // iOS devices can only use the "cue" related methods
+					player.cueVideoById(this._videoid)
+				}
+				else{
+					player.loadVideoById(this._videoid)
+				}
+			}
+			e.preventDefault()
+		}, false)
+	}
+}
+
+</script>    
+
+	<header>
+	
+		<div class="container">
+		
+			<a href="../index.html" title="View homepage"><img src="../images/hartford-church-of-england-high-school.png" alt="Hartford Church of England High School - Caritas Et Veritas" id="logo" /></a>
+			
+			<a href="music.php.html#" id="showmobnav"><img src="../images/showmobnav-bg.png" alt="Menu" /></a>
+				
+			<div id="mob">
+			  
+				<ul id="mobnav">
+					<li><a href="../index.html" title="View homepage">Home</a></li>
+					<li id="subnav1"><a href="../about-hartford/index.html" title="Find out more about Hartford Church of England High School" class="showsubnav">About Hartford <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="../about-hartford/headteachers-welcome.php.html" title="View full details">Headteacher&rsquo;s Welcome</a></li>
+							<li><a href="../about-hartford/our-ethos.php.html" title="View full details">Our Vision, Values &amp; Vocation</a></li>
+							<li><a href="../about-hartford/ofsted-report.php.html" title="View full details">OFSTED Report</a></li>
+							<li><a href="../about-hartford/facilities.php.html" title="View full details">Facilities</a></li>
+							<li><a href="../about-hartford/governors.php.html" title="View full details">Governors</a></li>
+							<li><a href="../about-hartford/pupil-premium.php.html" title="View full details">Pupil Premium</a></li>
+							<li><a href="../about-hartford/school-funding.php.html" title="View full details">School Funding</a></li>
+							<li><a href="teaching-alliance.php.html" title="View full details">Teaching Alliance</a></li>
+							<li><a href="../about-hartford/request-for-paper-copies.php.html" title="View full details">Request for Paper Copies</a></li>
+							<li><a href="../about-hartford/financial-information.php.html" title="View full details">Financial Information</a></li>
+							<li><a href="../about-hartford/the-public-sector-equality-duty.php.html" title="View full details">The Public Sector Equality Duty</a></li>
+						</ul>
+					</li>
+					<li id="subnav2" class="on"><a href="index.html" title="View information on the academic details of our school" class="showsubnav">Academic <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="teaching-staff.php.html" title="View full details">Teaching Staff</a></li>
+							<li><a href="curriculum.php.html" title="View full details">Curriculum</a></li>
+							<li><a href="subjects.php.html" title="View full details">Subjects</a></li>
+							<li><a href="homework.php.html" title="View full details">Homework</a></li>
+							<li><a href="satchel-one.php.html" title="View full details">Satchel One</a></li>
+							<li><a href="send-pathways.php.html" title="View full details">SEND Pathways</a></li>
+							<li><a href="assessment-and-reporting.php.html" title="View full details">Assessment &amp; Reporting</a></li>
+							<li><a href="results.php.html" title="View full details">GCSE Results</a></li>
+							<li><a href="library.php.html" title="View full details">Library</a></li>
+							<li><a href="remote-learning.php.html" title="View full details">Remote Learning</a></li>
+							<li><a href="personal-development.php.html" title="View full details">Personal Development</a></li>
+						</ul>
+					</li>
+					<li id="subnav3"><a href="../parents/index.html" title="View information for parents" class="showsubnav">Parents <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="../parents/policies.php.html" title="View full details">Policies</a></li>
+							<li><a href="../parents/esafety.php.html" title="View full details">eSafety</a></li>
+							<li><a href="../parents/internet-payments.php.html" title="View full details">Internet Payments</a></li>
+							<li><a href="../parents/letters-and-information.php.html" title="View full details">Letters &amp; Information</a></li>
+							<li><a href="../parents/parents-evening.php.html" title="View full details">Parents Evening</a></li>
+							<li><a href="../parents/attendance.php.html" title="View full details">Attendance</a></li>
+							<li><a href="../parents/pta.php.html" title="View full details">PTA</a></li>
+							<li><a href="../parents/school-trip-information.php.html" title="View full details">School Trip Information</a></li>
+							<li><a href="../pdf/hartford-high-term-dates.pdf" title="Download now" target="_blank">Term Dates</a></li>
+							<li><a href="../parents/uniform-details.php.html" title="View full details">Uniform Details</a></li>
+						</ul>
+					</li>
+					<li id="subnav4"><a href="../students/index.html" title="View information on life at our school" class="showsubnav">Students <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="../students/school-day.php.html" title="View full details">School Day</a></li>
+							<li><a href="../students/pastoral-care.php.html" title="View full details">Pastoral Care</a></li>
+							<li><a href="../students/knowledge-organisers.php.html" title="View full details">Knowledge Organisers</a></li>
+							<li><a href="../students/extra-curricular-activities.php.html" title="View full details">Extra Curricular Activities</a></li>
+							<li><a href="../students/careers-and-further-education.php.html" title="View full details">Careers &amp; Further Education</a></li>
+							<li><a href="../students/student-voice.php.html" title="View full details">Student Voice</a></li>
+							<li><a href="https://classroom.google.com/h" title="Visit website (opens new tab)" target="_blank">Google Classroom</a></li>
+							<li><a href="../students/awards-and-achievements.php.html" title="View full details">Awards &amp; Achievements</a></li>
+							<li><a href="../students/transport-information.php.html" title="View full details">Transport Information</a></li>
+							<li><a href="../students/year-6-transition.php.html" title="View full details">Year 6 Transition</a></li>
+							<li><a href="../students/wellbeing-support-and-counselling.php.html" title="View full details">Wellbeing Support &amp; Counselling</a></li>
+						</ul>
+					</li>
+					<li id="subnav5"><a href="../admissions/index.html" title="View information on admissions for our school" class="showsubnav">Admissions <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="../admissions/visit-us.php.html" title="View full details">Visit Us</a></li>
+							<li><a href="../pdf/hartford-high-prospectus.pdf" title="Download now" target="_blank">Prospectus</a></li>
+							<li><a href="../admissions/how-to-apply.php.html" title="View full details">How to Apply</a></li>
+							<li><a href="../admissions/appeals.php.html" title="View full details">Appeals</a></li>
+						</ul>
+					</li>
+					<li id="subnav6"><a href="../news-and-events/index.html" title="View our latest news &amp; upcoming events" class="showsubnav">News &amp; Events <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="../news-and-events/general-news.php.html" title="View full details">General News</a></li>
+							<li><a href="../news-and-events/chaplain-news.php.html" title="View full details">Chaplain News</a></li>
+							<li><a href="../news-and-events/calendar.php.html" title="View full details">Calendar</a></li>
+							<li><a href="../news-and-events/newsletters.php.html" title="View full details">Newsletters</a></li>
+						</ul>
+					</li>
+					<li><a href="../downloads/index.html" title="Download useful documents">Downloads</a></li>
+					<li><a href="../staff-vacancies/index.html" title="View our current staff vacancies">Staff Vacancies</a></li>
+					<li><a href="../contact/index.html" title="Get in touch with us">Contact</a></li>
+				</ul>
+			
+			</div>
+			
+			<nav>
+			
+				<ul id="topnav" class="sf-menu">
+					<li><a href="../downloads/index.html" title="Download useful documents">Downloads</a></li>
+					<li><a href="../staff-vacancies/index.html" title="View our current staff vacancies">Staff Vacancies</a></li>
+					<li><a href="../contact/index.html" title="Get in touch with us">Contact</a></li>
+				</ul>
+				
+				<ul class="sf-menu">
+					<li><a href="../index.html" title="View homepage">Home</a></li>
+					<li><a href="../about-hartford/index.html" title="Find out more about Hartford Church of England High School">About Hartford</a>
+						<ul class="submenu1">
+							<li><a href="../about-hartford/headteachers-welcome.php.html" title="View full details">Headteacher&rsquo;s Welcome</a></li>
+							<li><a href="../about-hartford/our-ethos.php.html" title="View full details">Our Vision, Values &amp; Vocation</a></li>
+							<li><a href="../about-hartford/ofsted-report.php.html" title="View full details">OFSTED Report</a></li>
+							<li><a href="../about-hartford/facilities.php.html" title="View full details">Facilities</a></li>
+							<li><a href="../about-hartford/governors.php.html" title="View full details">Governors</a></li>
+							<li><a href="../about-hartford/pupil-premium.php.html" title="View full details">Pupil Premium</a></li>
+							<li><a href="../about-hartford/school-funding.php.html" title="View full details">School Funding</a></li>
+							<li><a href="teaching-alliance.php.html" title="View full details">Teaching Alliance</a></li>
+							<li><a href="../about-hartford/request-for-paper-copies.php.html" title="View full details">Request for Paper Copies</a></li>
+							<li><a href="../about-hartford/financial-information.php.html" title="View full details">Financial Information</a></li>
+							<li><a href="../about-hartford/the-public-sector-equality-duty.php.html" title="View full details">The Public Sector Equality Duty</a></li>
+						</ul>
+					</li>
+					<li class="on"><a href="index.html" title="View information on the academic details of our school">Academic</a>
+						<ul class="submenu2">
+							<li><a href="teaching-staff.php.html" title="View full details">Teaching Staff</a></li>
+							<li><a href="curriculum.php.html" title="View full details">Curriculum</a></li>
+							<li><a href="subjects.php.html" title="View full details">Subjects</a></li>
+							<li><a href="homework.php.html" title="View full details">Homework</a></li>
+							<li><a href="satchel-one.php.html" title="View full details">Satchel One</a></li>
+							<li><a href="send-pathways.php.html" title="View full details">SEND Pathways</a></li>
+							<li><a href="assessment-and-reporting.php.html" title="View full details">Assessment &amp; Reporting</a></li>
+							<li><a href="results.php.html" title="View full details">GCSE Results</a></li>
+							<li><a href="library.php.html" title="View full details">Library</a></li>
+							<li><a href="remote-learning.php.html" title="View full details">Remote Learning</a></li>
+							<li><a href="personal-development.php.html" title="View full details">Personal Development</a></li>
+						</ul>
+					</li>
+					<li><a href="../parents/index.html" title="View information for parents">Parents</a>
+						<ul class="submenu3">
+							<li><a href="../parents/policies.php.html" title="View full details">Policies</a></li>
+							<li><a href="../parents/esafety.php.html" title="View full details">eSafety</a></li>
+							<li><a href="../parents/internet-payments.php.html" title="View full details">Internet Payments</a></li>
+							<li><a href="../parents/letters-and-information.php.html" title="View full details">Letters &amp; Information</a></li>
+							<li><a href="../parents/parents-evening.php.html" title="View full details">Parents Evening</a></li>
+							<li><a href="../parents/attendance.php.html" title="View full details">Attendance</a></li>
+							<li><a href="../parents/pta.php.html" title="View full details">PTA</a></li>
+							<li><a href="../parents/school-trip-information.php.html" title="View full details">School Trip Information</a></li>
+							<li><a href="../pdf/hartford-high-term-dates.pdf" title="Download now" target="_blank">Term Dates</a></li>
+							<li><a href="../parents/uniform-details.php.html" title="View full details">Uniform Details</a></li>
+						</ul>
+					</li>
+					<li><a href="../students/index.html" title="View information on life at our school">Students</a>
+						<ul class="submenu4">
+							<li><a href="../students/school-day.php.html" title="View full details">School Day</a></li>
+							<li><a href="../students/pastoral-care.php.html" title="View full details">Pastoral Care</a></li>
+							<li><a href="../students/knowledge-organisers.php.html" title="View full details">Knowledge Organisers</a></li>
+							<li><a href="../students/extra-curricular-activities.php.html" title="View full details">Extra Curricular Activities</a></li>
+							<li><a href="../students/careers-and-further-education.php.html" title="View full details">Careers &amp; Further Education</a></li>
+							<li><a href="../students/student-voice.php.html" title="View full details">Student Voice</a></li>
+							<li><a href="https://classroom.google.com/h" title="Visit website (opens new tab)" target="_blank">Google Classroom</a></li>
+							<li><a href="../students/awards-and-achievements.php.html" title="View full details">Awards &amp; Achievements</a></li>
+							<li><a href="../students/transport-information.php.html" title="View full details">Transport Information</a></li>
+							<li><a href="../students/year-6-transition.php.html" title="View full details">Year 6 Transition</a></li>
+							<li><a href="../students/wellbeing-support-and-counselling.php.html" title="View full details">Wellbeing Support &amp; Counselling</a></li>
+						</ul>
+					</li>
+					<li id="admissions"><a href="../admissions/index.html" title="View information on admissions for our school">Admissions</a>
+						<ul class="submenu5">
+							<li><a href="../admissions/visit-us.php.html" title="View full details">Visit Us</a></li>
+							<li><a href="../pdf/hartford-high-prospectus.pdf" title="Download now" target="_blank">Prospectus</a></li>
+							<li><a href="../admissions/how-to-apply.php.html" title="View full details">How to Apply</a></li>
+							<li><a href="../admissions/appeals.php.html" title="View full details">Appeals</a></li>
+						</ul>
+					</li>
+					<li id="news"><a href="../news-and-events/index.html" title="View our latest news &amp; upcoming events">News &amp; Events</a>
+						<ul class="submenu6">
+							<li><a href="../news-and-events/general-news.php.html" title="View full details">General News</a></li>
+							<li><a href="../news-and-events/chaplain-news.php.html" title="View full details">Chaplain News</a></li>
+							<li><a href="../news-and-events/calendar.php.html" title="View full details">Calendar</a></li>
+							<li><a href="../news-and-events/newsletters.php.html" title="View full details">Newsletters</a></li>
+						</ul>
+					</li>
+				</ul>
+			
+			</nav>
+			
+			<div class="clear"></div>
+		
+		</div>
+
+	</header>
+    
+	<div id="main" role="main">
+	
+
+		<div id="bg"></div>
+		
+
+	
+		<div id="banner">
+		
+			<img src="https://www.hartfordhigh.org.uk/images/headers/music.jpg?v=2" alt="Pupils at Hartford Church of England High School" />		
+			
+		</div>
+		
+		<div class="container">
+		
+		
+			<div id="subnav">
+			
+
+
+				
+				<h2>Academic</h2>
+				
+				<ul>
+					<li><a href="teaching-staff.php.html" title="View full details">Teaching Staff</a></li>
+					<li><a href="curriculum.php.html" title="View full details">Curriculum</a></li>
+					<li class="on"><a href="subjects.php.html" title="View full details">Subjects</a>
+							
+							
+						<ul>
+							<li><a href="art.php.html" title="View full details">Art</a></li>
+							<li><a href="business-studies.php.html" title="View full details">Business Studies</a></li>
+							<li><a href="child-development.php.html" title="View full details">Child Development</a></li>
+							<li><a href="computing.php.html" title="View full details">Computing</a></li>
+							<li><a href="dance.php.html" title="View full details">Dance</a></li>
+							<li><a href="design-and-technology.php.html" title="View full details">Design &amp; Technology</a></li>
+							<li><a href="drama.php.html" title="View full details">Drama</a></li>
+							<li><a href="engineering-design.php.html" title="View full details">Engineering Design</a></li>
+							<li><a href="english.php.html" title="View full details">English</a></li>
+							<li><a href="food-technology.php.html" title="View full details">Food Technology</a></li>
+							<li><a href="geography.php.html" title="View full details">Geography</a></li>
+							<li><a href="health-and-social-care.php.html" title="View full details">Health &amp; Social Care</a></li>
+							<li><a href="history.php.html" title="View full details">History</a></li>
+							<li><a href="imedia.php.html" title="View full details">iMedia</a></li>
+							<li><a href="mathematics.php.html" title="View full details">Mathematics</a></li>
+							<li><a href="modern-foreign-languages.php.html" title="View full details">Modern Foreign Languages</a></li>
+							<li class="on"><a href="music.php.html" title="View full details">Music</a></li>
+							<li><a href="physical-education-dance.php.html" title="View full details">Physical Education</a></li>
+							<li><a href="religious-studies.php.html" title="View full details">Religious Studies</a></li>
+							<li><a href="science.php.html" title="View full details">Science</a></li>
+						</ul>
+						
+					
+					</li>
+					<li><a href="homework.php.html" title="View full details">Homework</a></li>
+					<li><a href="satchel-one.php.html" title="View full details">Satchel One</a></li>
+					<li><a href="send-pathways.php.html" title="View full details">SEND Pathways</a></li>
+					<li><a href="assessment-and-reporting.php.html" title="View full details">Assessment &amp; Reporting</a></li>
+					<li><a href="results.php.html" title="View full details">GCSE Results</a></li>
+					<li><a href="library.php.html" title="View full details">Library</a></li>
+					<li><a href="remote-learning.php.html" title="View full details">Remote Learning</a></li>
+					<li><a href="personal-development.php.html" title="View full details">Personal Development</a></li>
+				</ul>
+
+
+
+
+			
+			</div>
+			
+			<div id="content">
+			
+
+		
+			<h1>Music</h1>
+			
+			<ul>
+				<li>Ms Z. Philippou - Curriculum Leader, Music</li>
+				<li>Mr J. Thompson - Teacher of Music</li>
+				<li>Mr Burton - Guitar Tutor</li>
+				<li>Mrs Bushnell-Wye - Clarinet and Saxophone Tutor</li>
+				<li>Miss Whyle - Brass Tutor</li>
+				<li>Mr Lawrence  - Drum Tutor</li>
+				<li>Mrs Kemsley - Singing Tutor</li>
+				<li>Mrs Powell - Flute and Oboe tutor</li>
+				<li>Ms Owens - Piano and Keyboard Tutor</li>
+				<li>Mrs Smalley - Violin and Viola Tutor</li>
+			</ul>
+			
+			<p>If you are interested in instrumental lessons for your child contact Ms. Philippou <b>zphilippou@hartfordhigh.co.uk</b></p>
+
+			<p><a href="https://www.hartfordhigh.org.uk/pdf/learning-journeys/music.pdf" title="Download now" target="_blank" class="button">Download Learning Journey</a></p>
+			
+			<br />
+			
+			<p class="big blue">&quot;Music education opens doors that help children pass from school into the world around them - a world of work, culture, intellectual activity, and human involvement. The future of our nation depends on providing our children with a complete education that includes music.&quot;</p>
+			
+			<p class="blue">Gerald Ford</p>
+
+			<br />
+			
+			<div class="col2">
+				
+				<img src="../images/cut.png" alt="" class="cut" />
+				
+				<a href="https://www.youtube.com/watch?v=SDSMlciuzxE" class="lightbox"><img src="https://www.hartfordhigh.org.uk/images/virtual-visit/music.jpg" alt="Music" /></a>
+			
+			</div>
+			
+			<br />
+			
+			<div id="tabs">
+			
+				<h2><a href="music.php.html#">Intent</a></h2>
+				
+				<div>
+				
+					<p>A room full of young people each at varying musical abilities, each playing a different instrument, each unique, all making music. Only music can achieve this, which is why it is of such importance in education. It is a powerful, all inclusive, unique form of communication that can change and impact the way our young people feel, think and act. Music goes far beyond what is learnt in the classroom. A Music education has been scientifically proven to improve language, reading and numeracy skills by affecting the way our brains develop and function. Our students are encouraged to build upon their skills in lessons and be motivated to explore their musicality further outside of lessons. </p>
+
+					<p>We all have a steady pulse, a heart rate, our personal drum beat. Without a drum beat, without music how can we truly live. A Music education helps the body and mind work together; it is about developing insightfulness, understanding and quality of mind. Not only do they develop musically, teaching Music educates our students in the importance of prior preparation whilst developing in self-confidence and learning to work as a team - all essential life skills.</p>
+				
+				</div>
+				
+				<h2><a href="music.php.html#">Design Rationale</a></h2>
+				
+				<div>
+				
+					<p>Our curriculum is based on performing, composing and listening and appraising, taking guidance from the National Curriculum, Musical Futures and the Music Model Curriculum. Our curriculum makes use of ukuleles, keyboards, guitars, drums and music technology. Music is made up of building blocks; we teach students how a scale is formulated and then how a chord is formulated, how a rhythm is developed - and through the Key Stages we build on these foundations so that learning is retained.</p>
+
+					<p>The learning journey begins with basic rhythms, scales and harmonies encouraging the use of primary chords on ukuleles and part singing. Year 7 are invited to showcase their singing skills in the Summer Concert and Carol Service. The journey continues in Year 8 using more complex rhythms, transposition in Pachelbel&rsquo;s Canon, harmonies using 7th chords in 12 bars as well as improvising a blues scale. Students learn how Music has evolved through time from the 1600s to the present day.  For some in Year 9 this is the end of their learning journey, however they walk away being able to perform most chords, compose with careful thought to harmonies taught when composing dance music and finally bring together all the knowledge they have acquired by composing their own film music. Our lessons are mostly practical however, we naturally refer to the Music industry using terms such as copyright, record labels, commissioned tasks. We also educate our learners in the musical journey of performers and composers from classical to pop.</p>
+
+					<p>In Years 10 and 11, we teach the BTEC Tech Award in Music; all prior knowledge and skills come together at this point within three components: Exploring Music Products and Styles, Music Skills Development, Responding to a Commercial Music Brief.</p>
+				
+				</div>
+				
+				<h2><a href="music.php.html#">Delivery</a></h2>
+				
+				<div>
+				
+					<p>Surrounded by instruments, terminology, musical imagery and influences, learners are immediately engaged in Music. Within minutes, they are challenged with retrieving key musical elements and a listening task. Once teaching is complete students, using a musical of instrument of their choice are set to task breaking down information, rehearsing, learning either as an individual or within a group. At this point music engulfs the classroom; there is plenty of noise, however the noise is a hive of learning and improving. The teacher is guiding, modelling various outcomes, facilitating musical ideas, encouraging students to improve and refine - showcasing any exemplar work. With support and reward, students are asked to showcase their work encouraging them to become confident performers with a supportive, respectful audience. By nurturing students with little confidence who are reluctant to perform, they begin to grow being reassured that they are in a secure environment, where mistakes can be made as one day they will master what they hope to achieve.</p>
+
+					<p>The delivery of Music is in not only the classroom, but also through what is offered outside the classroom in extra-curricular clubs: orchestra, drum club, singing groups and year group clubs - a place where students come and feel content making their own music and meeting others, even performing alongside others with a like-minded attitude. Performances are encouraged throughout all age groups, not just in the classroom but beyond it, using social networking as a performing platform, as well as physical performances in and outside of school.</p>
+				
+				</div>
+				
+				<h2><a href="music.php.html#">Impact</a></h2>
+				
+				<div>
+				
+					<h3>Low Stake</h3>
+					
+					<p>To embed knowledge in long-term memory, every lesson starts with students quizzed on prior knowledge (Verbal and Written Do Now Tasks). Student performance is then used effectively by teachers to identify misconceptions and plan accordingly to narrow knowledge gaps.</p>
+  
+					<h3>Mid Stake</h3>
+					
+					<p>During each learning phase, students undertake <b>musical performance</b> and <b>practical</b> tasks completed independently or in groups. Students receive personalised written feedback <b>to guide them in making the necessary improvements to their performance</b>. Teachers will check how students have acted on this feedback.</p>
+  
+					<h3>High Stake</h3>
+					
+					<p>The accumulation of skills and knowledge acquired over time is formally assessed twice a year to support students in developing long-term memory. Time is built in lessons to ensure that students reflect and respond to teacher feedback. </p>
+				
+				</div>
+			
+			</div>
+			
+			<p><a href="https://www.hartfordhigh.org.uk/pdf/long-term-plans/music.pdf" title="Download now" target="_blank" class="button">Download long term plan</a></p>
+			
+			<p><a href="../students/knowledge-organisers.php.html" title="View full details" class="button">Download knowledge organisers</a></p>
+			
+			
+			</div>
+			
+			<div class="clear"></div>
+			
+			
+		
+		</div>
+		
+	</div>
+	
+	<footer>
+	
+		<div class="container">
+		
+			<div class="col3">
+			
+				<h2>Get in Touch</h2>
+				
+				<p class="tabcol3"><a href="../contact/index.html" title="Get in touch with us" class="button">Enquire</a></p>
+				
+				<p class="tabcol3"><a href="../contact/index.html" title="Get in touch with us" class="button">Apply</a></p>
+				
+				<p class="tabcol3 last"><a href="../contact/index.html" title="Get in touch with us" class="button">Directions</a></p>
+				
+				<div class="clear"></div>
+			
+			</div>
+			
+			<div class="col3">
+			
+				<h2>Contact us</h2>
+				
+				<p><a href="../contact/index.html" title="Get in touch with us">mail@hartfordhigh.co.uk</a></p>
+				
+				<p>T: <a href="tel:01606786000" title="Call the school">01606 786000</a><br />
+				F: 01606 783941</p>
+				
+				<p><a href="https://www.facebook.com/Hartford-Church-of-England-High-School-586595514709182/" title="Like us on Facebook (opens new tab)" target="_blank"><img src="../images/facebook.png" alt="Facebook" /></a> <a href="https://twitter.com/hartfordCofE" title="Follow us on Twitter (opens new tab)" target="_blank"><img src="../images/twitter.png" alt="Twitter" /></a></p>
+			
+			</div>
+			
+			<div class="col3 last">
+			
+				<h2 class="tabhide">&nbsp;</h2>
+				
+				<p>Hartford Church of England High School<br />
+				Hartford Campus<br />
+				Chester Road<br />
+				Northwich<br />
+				Cheshire<br />
+				CW8 1LH</p>
+			
+			</div>
+		
+			<div class="clear"></div>
+			
+			<p class="small center">&copy; Hartford Church of England High School,<br class="mobbr" /> All rights reserved<span class="tabhide"> | </span><br class="tabbr" /><a href="../privacy-notices/index.html" title="View our Privacy Notices">Privacy Notices</a> | <a href="../sitemap/index.html" title="View our Sitemap">Sitemap</a> | <a href="http://www.1define.com/" title="Visit 1Define website (opens new tab)" target="_blank">1Define</a></p>
+			
+			<p id="backtotop"><img src="../images/back-to-top.png" alt="&uarr;" /> <a href="music.php.html#top" title="Go to top of page">Back to top</a></p>
+		
+		</div>
+
+	</footer>
+	
+<script src="../js/libs/jquery-1.11.1.min.js"></script>
+<script src="../js/superfish.js"></script>
+<script src="../js/jquery.scrollto.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script>
+	$(document).ready(function() {
+		$('ul.sf-menu').superfish({
+			animation: { opacity:'show', height:'show' },
+			speed: 'fast',
+			autoArrows: false,
+			dropShadows: false
+		});
+		
+		$(window).scroll(function(){
+			if($(document).scrollTop() > 0) {
+				$('#logo').addClass('small');
+			} else {
+				$('#logo').removeClass('small');
+			}
+		});
+		
+		$('#showmobnav').click(function(e){
+			$('#mobnav').delay(100).fadeToggle();
+			e.preventDefault();
+		});
+		
+		$('#subnav1 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav1').addClass('tempon');
+			document.getElementById('subnav1').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		$('#subnav2 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav2').addClass('tempon');
+			document.getElementById('subnav2').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		$('#subnav3 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav3').addClass('tempon');
+			document.getElementById('subnav3').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		$('#subnav4 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav4').addClass('tempon');
+			document.getElementById('subnav4').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		$('#subnav5 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav5').addClass('tempon');
+			document.getElementById('subnav5').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		$('#subnav6 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav6').addClass('tempon');
+			document.getElementById('subnav6').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		
+		
+	});
+	
+
+		$("#tabs").accordion({ activate: function(event, ui) {
+			next = $(this).find(".ui-state-active");
+			if (next.length > 0) {
+				$("html, body").scrollTop(next.offset().top);
+			}
+		}, active: false, heightStyle: "content", navigation: true, collapsible: true });
+
+</script>
+	
+</body>
+</html>
