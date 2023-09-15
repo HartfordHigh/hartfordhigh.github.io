@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+
+	<title>Hartford Church of England High School Knowledge Organisers</title>
+	<meta name="description" content="Download Knowledge Organisers for Students at Hartford Church of England High School in Northwich" />
+	
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="../css/style.css@ver=18.css" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="youtubelightbox" class="parent">
+	<div class="centeredchild">
+		<div class="videowrapper">
+		<div id="playerdiv"></div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+// load Youtube API code asynchronously
+var tag = document.createElement('script')
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0]
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+
+var isiOS = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)/i) != null //boolean check for iOS devices
+
+var youtubelightbox = document.getElementById('youtubelightbox')
+var player // variable to hold new YT.Player() instance
+
+// Hide lightbox when clicked on
+youtubelightbox.addEventListener('click', function(){
+	this.style.display = 'none'
+	player.stopVideo()
+}, false)
+
+// Exclude youtube iframe from above action
+youtubelightbox.querySelector('.centeredchild').addEventListener('click', function(e){
+	e.stopPropagation()
+}, false)
+
+
+// define onYouTubeIframeAPIReady() function and initialize lightbox when API is ready
+function onYouTubeIframeAPIReady() {
+	createlightbox()
+}
+
+// Extracts the Youtube video ID from a well formed Youtube URL
+function getyoutubeid(link){
+	// Assumed Youtube URL formats
+	// https://www.youtube.com/watch?v=Pe0jFDPHkzo
+	// https://youtu.be/Pe0jFDPHkzo
+	// https://www.youtube.com/v/Pe0jFDPHkzo
+	// and more
+
+	//See http://stackoverflow.com/a/6904504/4360074
+	var youtubeidreg = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+	return youtubeidreg.exec(link)[1] // return Youtube video ID portion of link
+}
+
+// Creates a new YT.Player() instance
+function createyoutubeplayer(videourl){
+	player = new YT.Player('playerdiv', {
+		videoId: videourl,
+		playerVars: {autoplay:1}
+	})
+}
+
+// Main Youtube lightbox function
+function createlightbox(){
+	var targetlinks = document.querySelectorAll('.lightbox')
+	for (var i=0; i<targetlinks.length; i++){
+		var link = targetlinks[i]
+		link._videoid = getyoutubeid(link) // store youtube video ID portion of link inside _videoid property
+		targetlinks[i].addEventListener('click', function(e){
+			youtubelightbox.style.display = 'block'
+			if (typeof player == 'undefined'){ // if video player hasn't been created yet
+				createyoutubeplayer(this._videoid)
+			}
+			else{
+				if (isiOS){ // iOS devices can only use the "cue" related methods
+					player.cueVideoById(this._videoid)
+				}
+				else{
+					player.loadVideoById(this._videoid)
+				}
+			}
+			e.preventDefault()
+		}, false)
+	}
+}
+
+</script>
+    
+
+	<header>
+	
+		<div class="container">
+		
+			<a href="../index.html" title="View homepage"><img src="../images/hartford-church-of-england-high-school.png" alt="Hartford Church of England High School - Caritas Et Veritas" id="logo" /></a>
+			
+			<a href="knowledge-organisers.php.html#" id="showmobnav"><img src="../images/showmobnav-bg.png" alt="Menu" /></a>
+				
+			<div id="mob">
+			  
+				<ul id="mobnav">
+					<li><a href="../index.html" title="View homepage">Home</a></li>
+					<li id="subnav1"><a href="../about-hartford/index.html" title="Find out more about Hartford Church of England High School" class="showsubnav">About Hartford <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="../about-hartford/headteachers-welcome.php.html" title="View full details">Headteacher&rsquo;s Welcome</a></li>
+							<li><a href="../about-hartford/our-ethos.php.html" title="View full details">Our Vision, Values &amp; Vocation</a></li>
+							<li><a href="../about-hartford/ofsted-report.php.html" title="View full details">OFSTED Report</a></li>
+							<li><a href="../about-hartford/facilities.php.html" title="View full details">Facilities</a></li>
+							<li><a href="../about-hartford/governors.php.html" title="View full details">Governors</a></li>
+							<li><a href="../about-hartford/pupil-premium.php.html" title="View full details">Pupil Premium</a></li>
+							<li><a href="../about-hartford/school-funding.php.html" title="View full details">School Funding</a></li>
+							<li><a href="../academic/teaching-alliance.php.html" title="View full details">Teaching Alliance</a></li>
+							<li><a href="../about-hartford/request-for-paper-copies.php.html" title="View full details">Request for Paper Copies</a></li>
+							<li><a href="../about-hartford/financial-information.php.html" title="View full details">Financial Information</a></li>
+							<li><a href="../about-hartford/the-public-sector-equality-duty.php.html" title="View full details">The Public Sector Equality Duty</a></li>
+						</ul>
+					</li>
+					<li id="subnav2"><a href="../academic/index.html" title="View information on the academic details of our school" class="showsubnav">Academic <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="../academic/teaching-staff.php.html" title="View full details">Teaching Staff</a></li>
+							<li><a href="../academic/curriculum.php.html" title="View full details">Curriculum</a></li>
+							<li><a href="../academic/subjects.php.html" title="View full details">Subjects</a></li>
+							<li><a href="../academic/homework.php.html" title="View full details">Homework</a></li>
+							<li><a href="../academic/satchel-one.php.html" title="View full details">Satchel One</a></li>
+							<li><a href="../academic/send-pathways.php.html" title="View full details">SEND Pathways</a></li>
+							<li><a href="../academic/assessment-and-reporting.php.html" title="View full details">Assessment &amp; Reporting</a></li>
+							<li><a href="../academic/results.php.html" title="View full details">GCSE Results</a></li>
+							<li><a href="../academic/library.php.html" title="View full details">Library</a></li>
+							<li><a href="../academic/remote-learning.php.html" title="View full details">Remote Learning</a></li>
+							<li><a href="../academic/personal-development.php.html" title="View full details">Personal Development</a></li>
+						</ul>
+					</li>
+					<li id="subnav3"><a href="../parents/index.html" title="View information for parents" class="showsubnav">Parents <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="../parents/policies.php.html" title="View full details">Policies</a></li>
+							<li><a href="../parents/esafety.php.html" title="View full details">eSafety</a></li>
+							<li><a href="../parents/internet-payments.php.html" title="View full details">Internet Payments</a></li>
+							<li><a href="../parents/letters-and-information.php.html" title="View full details">Letters &amp; Information</a></li>
+							<li><a href="../parents/parents-evening.php.html" title="View full details">Parents Evening</a></li>
+							<li><a href="../parents/attendance.php.html" title="View full details">Attendance</a></li>
+							<li><a href="../parents/pta.php.html" title="View full details">PTA</a></li>
+							<li><a href="../parents/school-trip-information.php.html" title="View full details">School Trip Information</a></li>
+							<li><a href="../pdf/hartford-high-term-dates.pdf" title="Download now" target="_blank">Term Dates</a></li>
+							<li><a href="../parents/uniform-details.php.html" title="View full details">Uniform Details</a></li>
+						</ul>
+					</li>
+					<li id="subnav4" class="on"><a href="index.html" title="View information on life at our school" class="showsubnav">Students <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="school-day.php.html" title="View full details">School Day</a></li>
+							<li><a href="pastoral-care.php.html" title="View full details">Pastoral Care</a></li>
+							<li class="on"><a href="knowledge-organisers.php.html" title="View full details">Knowledge Organisers</a></li>
+							<li><a href="extra-curricular-activities.php.html" title="View full details">Extra Curricular Activities</a></li>
+							<li><a href="careers-and-further-education.php.html" title="View full details">Careers &amp; Further Education</a></li>
+							<li><a href="student-voice.php.html" title="View full details">Student Voice</a></li>
+							<li><a href="https://classroom.google.com/h" title="Visit website (opens new tab)" target="_blank">Google Classroom</a></li>
+							<li><a href="awards-and-achievements.php.html" title="View full details">Awards &amp; Achievements</a></li>
+							<li><a href="transport-information.php.html" title="View full details">Transport Information</a></li>
+							<li><a href="year-6-transition.php.html" title="View full details">Year 6 Transition</a></li>
+							<li><a href="wellbeing-support-and-counselling.php.html" title="View full details">Wellbeing Support &amp; Counselling</a></li>
+						</ul>
+					</li>
+					<li id="subnav5"><a href="../admissions/index.html" title="View information on admissions for our school" class="showsubnav">Admissions <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="../admissions/visit-us.php.html" title="View full details">Visit Us</a></li>
+							<li><a href="../pdf/hartford-high-prospectus.pdf" title="Download now" target="_blank">Prospectus</a></li>
+							<li><a href="../admissions/how-to-apply.php.html" title="View full details">How to Apply</a></li>
+							<li><a href="../admissions/appeals.php.html" title="View full details">Appeals</a></li>
+						</ul>
+					</li>
+					<li id="subnav6"><a href="../news-and-events/index.html" title="View our latest news &amp; upcoming events" class="showsubnav">News &amp; Events <img src="../images/arrow.png" alt="&darr;" /></a>
+						<ul class="subnav">
+							<li><a href="../news-and-events/general-news.php.html" title="View full details">General News</a></li>
+							<li><a href="../news-and-events/chaplain-news.php.html" title="View full details">Chaplain News</a></li>
+							<li><a href="../news-and-events/calendar.php.html" title="View full details">Calendar</a></li>
+							<li><a href="../news-and-events/newsletters.php.html" title="View full details">Newsletters</a></li>
+						</ul>
+					</li>
+					<li><a href="../downloads/index.html" title="Download useful documents">Downloads</a></li>
+					<li><a href="../staff-vacancies/index.html" title="View our current staff vacancies">Staff Vacancies</a></li>
+					<li><a href="../contact/index.html" title="Get in touch with us">Contact</a></li>
+				</ul>
+			
+			</div>
+			
+			<nav>
+			
+				<ul id="topnav" class="sf-menu">
+					<li><a href="../downloads/index.html" title="Download useful documents">Downloads</a></li>
+					<li><a href="../staff-vacancies/index.html" title="View our current staff vacancies">Staff Vacancies</a></li>
+					<li><a href="../contact/index.html" title="Get in touch with us">Contact</a></li>
+				</ul>
+				
+				<ul class="sf-menu">
+					<li><a href="../index.html" title="View homepage">Home</a></li>
+					<li><a href="../about-hartford/index.html" title="Find out more about Hartford Church of England High School">About Hartford</a>
+						<ul class="submenu1">
+							<li><a href="../about-hartford/headteachers-welcome.php.html" title="View full details">Headteacher&rsquo;s Welcome</a></li>
+							<li><a href="../about-hartford/our-ethos.php.html" title="View full details">Our Vision, Values &amp; Vocation</a></li>
+							<li><a href="../about-hartford/ofsted-report.php.html" title="View full details">OFSTED Report</a></li>
+							<li><a href="../about-hartford/facilities.php.html" title="View full details">Facilities</a></li>
+							<li><a href="../about-hartford/governors.php.html" title="View full details">Governors</a></li>
+							<li><a href="../about-hartford/pupil-premium.php.html" title="View full details">Pupil Premium</a></li>
+							<li><a href="../about-hartford/school-funding.php.html" title="View full details">School Funding</a></li>
+							<li><a href="../academic/teaching-alliance.php.html" title="View full details">Teaching Alliance</a></li>
+							<li><a href="../about-hartford/request-for-paper-copies.php.html" title="View full details">Request for Paper Copies</a></li>
+							<li><a href="../about-hartford/financial-information.php.html" title="View full details">Financial Information</a></li>
+							<li><a href="../about-hartford/the-public-sector-equality-duty.php.html" title="View full details">The Public Sector Equality Duty</a></li>
+						</ul>
+					</li>
+					<li><a href="../academic/index.html" title="View information on the academic details of our school">Academic</a>
+						<ul class="submenu2">
+							<li><a href="../academic/teaching-staff.php.html" title="View full details">Teaching Staff</a></li>
+							<li><a href="../academic/curriculum.php.html" title="View full details">Curriculum</a></li>
+							<li><a href="../academic/subjects.php.html" title="View full details">Subjects</a></li>
+							<li><a href="../academic/homework.php.html" title="View full details">Homework</a></li>
+							<li><a href="../academic/satchel-one.php.html" title="View full details">Satchel One</a></li>
+							<li><a href="../academic/send-pathways.php.html" title="View full details">SEND Pathways</a></li>
+							<li><a href="../academic/assessment-and-reporting.php.html" title="View full details">Assessment &amp; Reporting</a></li>
+							<li><a href="../academic/results.php.html" title="View full details">GCSE Results</a></li>
+							<li><a href="../academic/library.php.html" title="View full details">Library</a></li>
+							<li><a href="../academic/remote-learning.php.html" title="View full details">Remote Learning</a></li>
+							<li><a href="../academic/personal-development.php.html" title="View full details">Personal Development</a></li>
+						</ul>
+					</li>
+					<li><a href="../parents/index.html" title="View information for parents">Parents</a>
+						<ul class="submenu3">
+							<li><a href="../parents/policies.php.html" title="View full details">Policies</a></li>
+							<li><a href="../parents/esafety.php.html" title="View full details">eSafety</a></li>
+							<li><a href="../parents/internet-payments.php.html" title="View full details">Internet Payments</a></li>
+							<li><a href="../parents/letters-and-information.php.html" title="View full details">Letters &amp; Information</a></li>
+							<li><a href="../parents/parents-evening.php.html" title="View full details">Parents Evening</a></li>
+							<li><a href="../parents/attendance.php.html" title="View full details">Attendance</a></li>
+							<li><a href="../parents/pta.php.html" title="View full details">PTA</a></li>
+							<li><a href="../parents/school-trip-information.php.html" title="View full details">School Trip Information</a></li>
+							<li><a href="../pdf/hartford-high-term-dates.pdf" title="Download now" target="_blank">Term Dates</a></li>
+							<li><a href="../parents/uniform-details.php.html" title="View full details">Uniform Details</a></li>
+						</ul>
+					</li>
+					<li class="on"><a href="index.html" title="View information on life at our school">Students</a>
+						<ul class="submenu4">
+							<li><a href="school-day.php.html" title="View full details">School Day</a></li>
+							<li><a href="pastoral-care.php.html" title="View full details">Pastoral Care</a></li>
+							<li class="on"><a href="knowledge-organisers.php.html" title="View full details">Knowledge Organisers</a></li>
+							<li><a href="extra-curricular-activities.php.html" title="View full details">Extra Curricular Activities</a></li>
+							<li><a href="careers-and-further-education.php.html" title="View full details">Careers &amp; Further Education</a></li>
+							<li><a href="student-voice.php.html" title="View full details">Student Voice</a></li>
+							<li><a href="https://classroom.google.com/h" title="Visit website (opens new tab)" target="_blank">Google Classroom</a></li>
+							<li><a href="awards-and-achievements.php.html" title="View full details">Awards &amp; Achievements</a></li>
+							<li><a href="transport-information.php.html" title="View full details">Transport Information</a></li>
+							<li><a href="year-6-transition.php.html" title="View full details">Year 6 Transition</a></li>
+							<li><a href="wellbeing-support-and-counselling.php.html" title="View full details">Wellbeing Support &amp; Counselling</a></li>
+						</ul>
+					</li>
+					<li id="admissions"><a href="../admissions/index.html" title="View information on admissions for our school">Admissions</a>
+						<ul class="submenu5">
+							<li><a href="../admissions/visit-us.php.html" title="View full details">Visit Us</a></li>
+							<li><a href="../pdf/hartford-high-prospectus.pdf" title="Download now" target="_blank">Prospectus</a></li>
+							<li><a href="../admissions/how-to-apply.php.html" title="View full details">How to Apply</a></li>
+							<li><a href="../admissions/appeals.php.html" title="View full details">Appeals</a></li>
+						</ul>
+					</li>
+					<li id="news"><a href="../news-and-events/index.html" title="View our latest news &amp; upcoming events">News &amp; Events</a>
+						<ul class="submenu6">
+							<li><a href="../news-and-events/general-news.php.html" title="View full details">General News</a></li>
+							<li><a href="../news-and-events/chaplain-news.php.html" title="View full details">Chaplain News</a></li>
+							<li><a href="../news-and-events/calendar.php.html" title="View full details">Calendar</a></li>
+							<li><a href="../news-and-events/newsletters.php.html" title="View full details">Newsletters</a></li>
+						</ul>
+					</li>
+				</ul>
+			
+			</nav>
+			
+			<div class="clear"></div>
+		
+		</div>
+
+	</header>
+    
+	<div id="main" role="main">
+	
+
+		<div id="bg"></div>
+		
+
+	
+		<div id="banner">
+		
+			<img src="../images/headers/knowledge-organisers.jpg@v=2" alt="Pupils at Hartford Church of England High School" />		
+			
+		</div>
+		
+		<div class="container">
+		
+		
+			<div id="subnav">
+			
+
+
+
+
+						
+				<h2>Students</h2>
+				
+				<ul>
+					<li><a href="school-day.php.html" title="View full details">School Day</a></li>
+					<li><a href="pastoral-care.php.html" title="View full details">Pastoral Care</a></li>
+					<li class="on"><a href="knowledge-organisers.php.html" title="View full details">Knowledge Organisers</a></li>
+					<li><a href="extra-curricular-activities.php.html" title="View full details">Extra Curricular Activities</a></li>
+					<li><a href="careers-and-further-education.php.html" title="View full details">Careers &amp; Further Education</a></li>
+					<li><a href="student-voice.php.html" title="View full details">Student Voice</a></li>
+					<li><a href="https://classroom.google.com/h" title="Visit website (opens new tab)" target="_blank">Google Classroom</a></li>
+					<li><a href="awards-and-achievements.php.html" title="View full details">Awards &amp; Achievements</a></li>
+					<li><a href="transport-information.php.html" title="View full details">Transport Information</a></li>
+					<li><a href="year-6-transition.php.html" title="View full details">Year 6 Transition</a></li>
+					<li><a href="wellbeing-support-and-counselling.php.html" title="View full details">Wellbeing Support &amp; Counselling</a></li>
+				</ul>
+	
+
+			
+			</div>
+			
+			<div id="content">
+			
+
+		
+			<h1>Knowledge Organisers</h1>
+			
+			<p>Knowledge Organisers will equip you with the skills and knowledge needed to achieve your very best.</p>
+ 
+			<p>Research suggests that the ability to learn, retain and recall knowledge is essential to examination success. Typically, if you leave your revision until a few weeks or even days/hours before examinations and tests, this presents a problem. Our short-term memory has limited capacity and you find yourself unable to retain the information hence you become stressed and often give up, convincing yourself you are no good at revising or &lsquo;can&rsquo;t do that subject&rsquo;. </p>
+
+ 			<h2>Top Tip</h2>
+
+			<p>The secret to success is to regularly revisit the knowledge learned. This helps transfer the knowledge from the short-term memory to the long-term memory, which not only helps to make learning &lsquo;stick&rsquo;, but is also frees up our short-term memory for day-to-day learning and experiences.</p>
+
+
+			<h2>A collection of the core knowledge needed to learn</h2>
+
+			<p>Download your year group today!</p>
+			
+			<table>
+				<tr>
+					<td class="header">Title</td>
+					<td class="header center"></td>
+				</tr>
+
+<tr><td>Introduction</td><td class="center"><a href="../uploads/files/introduction-168.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 1  YEAR 10  Knowledge Organisers 2022</td><td class="center"><a href="../uploads/files/term-1-year-10-knowledge-org-285.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 1  YEAR 11  Knowledge Organisers 2022</td><td class="center"><a href="../uploads/files/term-1-year-11-knowledge-org-286.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 1  YEAR 7  Knowledge Organisers 2022</td><td class="center"><a href="../uploads/files/term-1-year-7-knowledge-orga-281.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 1  YEAR 8  Knowledge Organisers 2022</td><td class="center"><a href="../uploads/files/term-1-year-8-knowledge-orga-283.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 1  YEAR 9  Knowledge Organisers 2022</td><td class="center"><a href="../uploads/files/term-1-year-9-knowledge-orga-284.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 2 YEAR 10 Knowledge Organiser 2022.</td><td class="center"><a href="../uploads/files/term-2-year-10-knowledge-organ-292.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 2 YEAR 11 Knowledge Organiser 2022.</td><td class="center"><a href="../uploads/files/term-2-year-11-knowledge-organ-293.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 2 YEAR 7 Knowledge Organiser 2022</td><td class="center"><a href="../uploads/files/term-2-year-7-knowledge-organi-290.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 2 YEAR 8 Knowledge Organiser 2022.</td><td class="center"><a href="../uploads/files/term-2-year-8-knowledge-organi-291.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 2 YEAR 9 Knowledge Organiser 2022.</td><td class="center"><a href="../uploads/files/term-2-year-9-knowledge-organi-294.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 3  YEAR 10 Knowledge Organisers 2023</td><td class="center"><a href="../uploads/files/term-3-year-10-knowledge-orga-304.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 3  YEAR 11 Knowledge Organisers 2023</td><td class="center"><a href="../uploads/files/term-3-year-11-knowledge-orga-305.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 3  YEAR 7 Knowledge Organisers 2023</td><td class="center"><a href="../uploads/files/year-7-term-3-knowledge-organi-301.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 3  YEAR 8 Knowledge Organisers 2023</td><td class="center"><a href="https://www.hartfordhigh.org.uk/uploads/files/term-3-year-8-knowledge-organ-302.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 3  YEAR 9 Knowledge Organisers 2023</td><td class="center"><a href="https://www.hartfordhigh.org.uk/uploads/files/term-3-year-9-knowledge-organ-303.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 4 YEAR 10 Knowledge Organisers 2023</td><td class="center"><a href="https://www.hartfordhigh.org.uk/uploads/files/term-4-year-10-knowledge-organ-315.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 4 YEAR 7 Knowledge Organisers 2023</td><td class="center"><a href="https://www.hartfordhigh.org.uk/uploads/files/term-4-year-7-knowledge-organi-312.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 4 YEAR 8 Knowledge Organisers 2023</td><td class="center"><a href="https://www.hartfordhigh.org.uk/uploads/files/term-4-year-8-knowledge-organi-313.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 4 YEAR 9 Knowledge Organisers 2023</td><td class="center"><a href="https://www.hartfordhigh.org.uk/uploads/files/term-4-year-9-knowledge-organi-314.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 5  YEAR 10 Knowledge Organiser 2023 </td><td class="center"><a href="https://www.hartfordhigh.org.uk/uploads/files/term-5-year-10-knowledge-orga-321.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 5  YEAR 7 Knowledge Organiser 2023.pdf</td><td class="center"><a href="https://www.hartfordhigh.org.uk/uploads/files/term-5-year-7-knowledge-organ-318.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 5  YEAR 8 Knowledge Organiser 2023.pdf</td><td class="center"><a href="https://www.hartfordhigh.org.uk/uploads/files/term-5-year-8-knowledge-organ-319.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr><tr><td>Term 5  YEAR 9 Knowledge Organiser 2023.pdf</td><td class="center"><a href="https://www.hartfordhigh.org.uk/uploads/files/term-5-year-9-knowledge-organ-320.pdf" title="Download file (opens new window)" target="_blank">Download file</a></td></tr></table>
+			<h2>How can you support your children at home</h2>
+
+			<p>Do not be worried you do not have all of the subject-specific knowledge to be able to help, or check that your children has done their homework and revision.</p>
+
+			<p>The knowledge organisers will help you to do this easily alongside the videos and useful tips on how best to use them.</p>
+			
+			<br />
+			
+			<div class="center">
+			
+				<div class="col2 floatleft">
+					
+					<a href="https://www.youtube.com/watch?v=SUhnTYWRqkQ" class="lightbox"><img src="https://www.hartfordhigh.org.uk/images/knowledge-organisers/guide-to-self-quizzing.jpg" alt="Guide to Self-Quizzing" /></a>
+					
+					<p><a href="https://www.youtube.com/watch?v=SUhnTYWRqkQ" class="lightbox">Guide to Self-Quizzing</a></p>
+				
+				</div>
+				
+				<div class="col2 floatright">
+					
+					<a href="https://www.youtube.com/watch?v=DTjW3LWhJ7o" class="lightbox"><img src="https://www.hartfordhigh.org.uk/images/knowledge-organisers/mindmaps.jpg" alt="Mindmaps" /></a>
+					
+					<p><a href="https://www.youtube.com/watch?v=DTjW3LWhJ7o" class="lightbox">Mindmaps</a></p>
+				
+				</div>
+				
+				<div class="clear"></div>
+				
+				<div class="col2 floatleft">
+					
+					<a href="https://www.youtube.com/watch?v=uX0vU4cBnxA" class="lightbox"><img src="https://www.hartfordhigh.org.uk/images/knowledge-organisers/how-to-use-your-knowledge-organiser.jpg" alt="How to use your Knowledge Organiser" /></a>
+					
+					<p><a href="https://www.youtube.com/watch?v=uX0vU4cBnxA" class="lightbox">How to use your Knowledge Organiser</a></p>
+				
+				</div>
+				
+				<div class="col2 floatright">
+					
+					<a href="https://www.youtube.com/watch?v=g4bCN4TpS0k" class="lightbox"><img src="https://www.hartfordhigh.org.uk/images/knowledge-organisers/word-up.jpg" alt="Word up" /></a>
+					
+					<p><a href="https://www.youtube.com/watch?v=g4bCN4TpS0k" class="lightbox">Word up</a></p>
+				
+				</div>
+				
+				<div class="clear"></div>
+				
+			</div>
+		
+			
+			</div>
+			
+			<div class="clear"></div>
+			
+			
+		
+		</div>
+		
+	</div>
+	
+	<footer>
+	
+		<div class="container">
+		
+			<div class="col3">
+			
+				<h2>Get in Touch</h2>
+				
+				<p class="tabcol3"><a href="../contact/index.html" title="Get in touch with us" class="button">Enquire</a></p>
+				
+				<p class="tabcol3"><a href="../contact/index.html" title="Get in touch with us" class="button">Apply</a></p>
+				
+				<p class="tabcol3 last"><a href="../contact/index.html" title="Get in touch with us" class="button">Directions</a></p>
+				
+				<div class="clear"></div>
+			
+			</div>
+			
+			<div class="col3">
+			
+				<h2>Contact us</h2>
+				
+				<p><a href="../contact/index.html" title="Get in touch with us">mail@hartfordhigh.co.uk</a></p>
+				
+				<p>T: <a href="tel:01606786000" title="Call the school">01606 786000</a><br />
+				F: 01606 783941</p>
+				
+				<p><a href="https://www.facebook.com/Hartford-Church-of-England-High-School-586595514709182/" title="Like us on Facebook (opens new tab)" target="_blank"><img src="../images/facebook.png" alt="Facebook" /></a> <a href="https://twitter.com/hartfordCofE" title="Follow us on Twitter (opens new tab)" target="_blank"><img src="../images/twitter.png" alt="Twitter" /></a></p>
+			
+			</div>
+			
+			<div class="col3 last">
+			
+				<h2 class="tabhide">&nbsp;</h2>
+				
+				<p>Hartford Church of England High School<br />
+				Hartford Campus<br />
+				Chester Road<br />
+				Northwich<br />
+				Cheshire<br />
+				CW8 1LH</p>
+			
+			</div>
+		
+			<div class="clear"></div>
+			
+			<p class="small center">&copy; Hartford Church of England High School,<br class="mobbr" /> All rights reserved<span class="tabhide"> | </span><br class="tabbr" /><a href="../privacy-notices/index.html" title="View our Privacy Notices">Privacy Notices</a> | <a href="../sitemap/index.html" title="View our Sitemap">Sitemap</a> | <a href="http://www.1define.com/" title="Visit 1Define website (opens new tab)" target="_blank">1Define</a></p>
+			
+			<p id="backtotop"><img src="../images/back-to-top.png" alt="&uarr;" /> <a href="knowledge-organisers.php.html#top" title="Go to top of page">Back to top</a></p>
+		
+		</div>
+
+	</footer>
+	
+<script src="../js/libs/jquery-1.11.1.min.js"></script>
+<script src="../js/superfish.js"></script>
+<script src="../js/jquery.scrollto.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script>
+	$(document).ready(function() {
+		$('ul.sf-menu').superfish({
+			animation: { opacity:'show', height:'show' },
+			speed: 'fast',
+			autoArrows: false,
+			dropShadows: false
+		});
+		
+		$(window).scroll(function(){
+			if($(document).scrollTop() > 0) {
+				$('#logo').addClass('small');
+			} else {
+				$('#logo').removeClass('small');
+			}
+		});
+		
+		$('#showmobnav').click(function(e){
+			$('#mobnav').delay(100).fadeToggle();
+			e.preventDefault();
+		});
+		
+		$('#subnav1 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav1').addClass('tempon');
+			document.getElementById('subnav1').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		$('#subnav2 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav2').addClass('tempon');
+			document.getElementById('subnav2').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		$('#subnav3 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav3').addClass('tempon');
+			document.getElementById('subnav3').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		$('#subnav4 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav4').addClass('tempon');
+			document.getElementById('subnav4').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		$('#subnav5 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav5').addClass('tempon');
+			document.getElementById('subnav5').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		$('#subnav6 .showsubnav').click(function(e){
+			$('.subnav').hide();
+			$(this).parent().children('ul').show(100)
+			$('#mobnav li').removeClass('tempon');
+			$('#subnav6').addClass('tempon');
+			document.getElementById('subnav6').scrollIntoView();
+			e.preventDefault();
+		});
+		
+		
+		
+	});
+	
+
+		$("#tabs").accordion({ activate: function(event, ui) {
+			next = $(this).find(".ui-state-active");
+			if (next.length > 0) {
+				$("html, body").scrollTop(next.offset().top);
+			}
+		}, active: false, heightStyle: "content", navigation: true, collapsible: true });
+
+</script>
+	
+</body>
+</html>
